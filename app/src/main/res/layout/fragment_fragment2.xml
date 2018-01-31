@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="kylephan.com.tecace2.Fragment2">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/fragment_name2"
+        android:layout_width="match_parent"
+        android:layout_height="450px"
+        android:paddingTop="100px"
+        android:gravity="center_horizontal"
+        android:text=""
+        android:textSize="25sp"/>
+    <Button
+        android:id="@+id/fragment_button2"
+        android:layout_width="450px"
+        android:layout_height="200px"
+        android:layout_below="@id/fragment_name"
+        android:layout_centerHorizontal="true"
+        android:text="Next" />
+
+</RelativeLayout>
