@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String[][] jsonData = new String[3][5];
+    private String[][] jsonData = new String[3][6];
     private int fragCounter = 0;
     private int counter = 0;
 
@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.setCustomAnimations(entryAnim, exitAnim, exitAnim, entryAnim);
             fragmentTransaction.add(R.id.fragment_container, frag);
-            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
             // production code should handle these exceptions more gracefully
         } catch (ClassNotFoundException x) {
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             jsonData[counter][2] = jObject.getString("layout");
             jsonData[counter][3] = jObject.getString("entry");
             jsonData[counter][4] = jObject.getString("exit");
-
+            jsonData[counter][5] = jObject.getString("next");
 
             for (int i = 0; i < jsonData.length; i++) {
                 for (int j = 0; j < jsonData[i].length; j++) {

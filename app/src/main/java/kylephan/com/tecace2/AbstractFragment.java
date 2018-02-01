@@ -23,15 +23,17 @@ public class AbstractFragment extends Fragment {
 
     private int count;
 
-    private String fragName = new String();
-    private String fragPath = new String();
-    private String fragLayout = new String();
-    private String fragEntry = new String();
-    private String fragExit = new String();
 
-    private String[][] data = new String[3][5];
-
+    private String fragName;
+    private String fragPath;
+    private String fragLayout;
+    private String fragEntry;
+    private String fragExit;
     private String pastFrags;
+
+    private String[][] data = new String[3][6];
+
+
 
     public AbstractFragment() {
         // Required empty public constructor
@@ -51,6 +53,7 @@ public class AbstractFragment extends Fragment {
         fragLayout = data[count][2];
         fragEntry = data[count][3];
         fragExit = data[count][4];
+//        pastFrags = data[count][5];
     }
 
     @Override
@@ -76,10 +79,17 @@ public class AbstractFragment extends Fragment {
                 try {
                     int entryAnim = getResources().getIdentifier(fragEntry,"anim", getActivity().getPackageName());
                     int exitAnim = getResources().getIdentifier(fragExit,"anim", getActivity().getPackageName());
-                    int nextCount = count + 1;
+                    int nextCount;
+                    if (count >= 2) {
+                        nextCount = 0;
+                    }  else {
+                        nextCount = count + 1;
+                    }
+
                     c = Class.forName(data[nextCount][1]);
                     Class[] argTypes = new Class[] { String[][].class, int.class, String.class};
                     Method main = c.getDeclaredMethod("newInstance", argTypes);
+
                     Object[] mainArgs = {data, nextCount, (pastFrags + " " + fragName)};
                     Fragment frag = (Fragment) main.invoke(c, (Object[])mainArgs);
 
