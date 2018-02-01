@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
             android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
             android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.setCustomAnimations(entryAnim, exitAnim, exitAnim, entryAnim);
+            fragmentTransaction.setCustomAnimations(entryAnim, exitAnim, entryAnim, exitAnim);
             fragmentTransaction.add(R.id.fragment_container, frag);
             fragmentTransaction.commit();
             // production code should handle these exceptions more gracefully

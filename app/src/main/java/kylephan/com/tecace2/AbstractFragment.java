@@ -23,6 +23,8 @@ public class AbstractFragment extends Fragment {
 
     private int count;
 
+    private int entryAnim;
+    private int exitAnim;
 
     private String fragName;
     private String fragPath;
@@ -46,13 +48,12 @@ public class AbstractFragment extends Fragment {
         data = (String[][]) getArguments().getSerializable("data");
         count = getArguments().getInt("counter");
         pastFrags = getArguments().getString("past");
-        System.out.println("--------------------------- From F1 onCreate  " + getArguments().getInt("counter"));
-        System.out.println("--------------------------- From F1  " + count);
         fragName = data[count][0];
         fragPath = data[count][1];
         fragLayout = data[count][2];
         fragEntry = data[count][3];
         fragExit = data[count][4];
+
 //        pastFrags = data[count][5];
     }
 
@@ -61,31 +62,25 @@ public class AbstractFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         int layoutId = getResources().getIdentifier(fragLayout, "layout", getActivity().getPackageName());
-        Log.w("layoutID", "" + layoutId);
-        Log.w("r.layout","" + R.layout.fragment_fragment1);
-        Log.w("fragLayout",fragLayout);
         View inflatedView = inflater.inflate(layoutId, container, false);
         TextView t = (TextView) inflatedView.findViewById(R.id.fragment_name);
         t.setText(fragName);
         TextView t2 = (TextView)  inflatedView.findViewById(R.id.fragment_list);
         t2.setText(pastFrags);
-        Log.w("Fragment 1 name:", fragName);
         Button next = (Button) inflatedView.findViewById(R.id.fragment_button);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.w("Fragment 1:", "Clicked!");
                 Class<?> c = null;
                 try {
-                    int entryAnim = getResources().getIdentifier(fragEntry,"anim", getActivity().getPackageName());
-                    int exitAnim = getResources().getIdentifier(fragExit,"anim", getActivity().getPackageName());
+                    entryAnim = getResources().getIdentifier(fragEntry,"anim", getActivity().getPackageName());
+                    exitAnim = getResources().getIdentifier(fragExit,"anim", getActivity().getPackageName());
                     int nextCount;
                     if (count >= 2) {
                         nextCount = 0;
                     }  else {
                         nextCount = count + 1;
                     }
-
                     c = Class.forName(data[nextCount][1]);
                     Class[] argTypes = new Class[] { String[][].class, int.class, String.class};
                     Method main = c.getDeclaredMethod("newInstance", argTypes);
@@ -95,7 +90,7 @@ public class AbstractFragment extends Fragment {
 
                     android.support.v4.app.FragmentManager fragmentManager = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.setCustomAnimations(entryAnim, exitAnim, exitAnim, entryAnim);
+                    fragmentTransaction.setCustomAnimations(entryAnim, exitAnim, entryAnim, exitAnim);
                     fragmentTransaction.replace(R.id.fragment_container, frag);
                     fragmentTransaction.addToBackStack(data[nextCount][1]);
                     fragmentTransaction.commit();
