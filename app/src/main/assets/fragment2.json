@@ -1,6 +1,9 @@
 {
     "name": "Fragment 2",
-    "path": "app.src.main.java.kylephan.com.tecace",
-    "layout": "fragment_abstract.xml",
-    "transition": "R.anim.slide_in_left"
+    "path": "kylephan.com.tecace2.Fragment2",
+    "layout": "fragment_fragment2",
+    "entry": "animation2entry",
+    "exit": "animation2entry",
+    "next": "2"
+
 }
