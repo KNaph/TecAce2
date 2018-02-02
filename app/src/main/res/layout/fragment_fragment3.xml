@@ -14,7 +14,7 @@
         android:paddingRight="50px"
         android:gravity="right"
         android:text=""
-        android:textSize="25sp"/>
+        android:textSize="45sp"/>
     <TextView
         android:id="@+id/fragment_list"
         android:layout_width="match_parent"
@@ -22,10 +22,11 @@
         android:paddingRight="50px"
         android:gravity="right"
         android:text=""
+        android:textSize="20sp"
         android:layout_below="@id/fragment_name"/>
     <Button
         android:id="@+id/fragment_button"
-        android:layout_width="450px"
+        android:layout_width="750px"
         android:layout_height="200px"
         android:layout_below="@id/fragment_list"
         android:layout_centerHorizontal="true"
