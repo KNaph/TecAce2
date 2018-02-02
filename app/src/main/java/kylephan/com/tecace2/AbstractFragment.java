@@ -25,12 +25,18 @@ public class AbstractFragment extends Fragment {
 
     private int entryAnim;
     private int exitAnim;
+    private int entryAnim2;
+    private int exitAnim2;
+
+    private int nextCount;
 
     private String fragName;
     private String fragPath;
     private String fragLayout;
     private String fragEntry;
     private String fragExit;
+    private String nextFragEntry;
+    private String nextFragExit;
     private String pastFrags;
 
     private String[][] data = new String[3][6];
@@ -51,8 +57,16 @@ public class AbstractFragment extends Fragment {
         fragName = data[count][0];
         fragPath = data[count][1];
         fragLayout = data[count][2];
+        if (count >= 2) {
+            nextCount = 0;
+        }  else {
+            nextCount = count + 1;
+        }
         fragEntry = data[count][3];
         fragExit = data[count][4];
+        nextFragEntry = data[nextCount][3];
+        nextFragExit = data[nextCount][4];
+        System.out.println("--------------- Anims: In: " + fragEntry + " Out: " + fragExit);
 
 //        pastFrags = data[count][5];
     }
@@ -73,14 +87,11 @@ public class AbstractFragment extends Fragment {
             public void onClick(View v) {
                 Class<?> c = null;
                 try {
-                    entryAnim = getResources().getIdentifier(fragEntry,"anim", getActivity().getPackageName());
-                    exitAnim = getResources().getIdentifier(fragExit,"anim", getActivity().getPackageName());
-                    int nextCount;
-                    if (count >= 2) {
-                        nextCount = 0;
-                    }  else {
-                        nextCount = count + 1;
-                    }
+                    entryAnim = getResources().getIdentifier(fragEntry,"animator", getActivity().getPackageName());
+                    exitAnim = getResources().getIdentifier(fragExit,"animator", getActivity().getPackageName());
+                    entryAnim2 = getResources().getIdentifier(nextFragEntry,"animator", getActivity().getPackageName());
+                    exitAnim2 = getResources().getIdentifier(nextFragExit,"animator", getActivity().getPackageName());
+
                     c = Class.forName(data[nextCount][1]);
                     Class[] argTypes = new Class[] { String[][].class, int.class, String.class};
                     Method main = c.getDeclaredMethod("newInstance", argTypes);
@@ -90,8 +101,8 @@ public class AbstractFragment extends Fragment {
 
                     android.support.v4.app.FragmentManager fragmentManager = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.setCustomAnimations(entryAnim, exitAnim, entryAnim, exitAnim);
-                    fragmentTransaction.replace(R.id.fragment_container, frag);
+                    fragmentTransaction.setCustomAnimations(entryAnim2, exitAnim, entryAnim, exitAnim2);
+                    fragmentTransaction.replace(R.id.fragment_container, frag, fragName);
                     fragmentTransaction.addToBackStack(data[nextCount][1]);
                     fragmentTransaction.commit();
                     // production code should handle these exceptions more gracefully
@@ -108,4 +119,11 @@ public class AbstractFragment extends Fragment {
         });
         return inflatedView;
     }
+
+//    @Override
+//    public  void onDestroyView() {
+//        ViewGroup mContainer = (ViewGroup) getActivity().findViewById(R.id.fragment_container);
+//        mContainer.removeAllViews();
+//        super.onDestroyView();
+//    }
 }

@@ -29,8 +29,11 @@ public class MainActivity extends AppCompatActivity {
         findJSON(getApplicationContext());
         Class<?> c = null;
         try {
-            int entryAnim = getResources().getIdentifier(jsonData[0][3],"anim", getPackageName());
-            int exitAnim = getResources().getIdentifier(jsonData[0][4],"anim", getPackageName());
+            int entryAnim = getResources().getIdentifier(jsonData[0][3],"animator", getPackageName());
+            int exitAnim = getResources().getIdentifier(jsonData[1][4],"animator", getPackageName());
+            int entryAnim2 = getResources().getIdentifier(jsonData[1][3],"animator", getPackageName());
+            int exitAnim2 = getResources().getIdentifier(jsonData[1][4],"animator", getPackageName());
+
             c = Class.forName(jsonData[0][1]);
             Class[] argTypes = new Class[] { String[][].class, int.class, String.class};
             Method main = c.getDeclaredMethod("newInstance", argTypes);
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
             android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
             android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.setCustomAnimations(entryAnim, exitAnim, entryAnim, exitAnim);
+            fragmentTransaction.setCustomAnimations(entryAnim2, exitAnim, entryAnim, exitAnim2);
             fragmentTransaction.add(R.id.fragment_container, frag);
             fragmentTransaction.commit();
             // production code should handle these exceptions more gracefully

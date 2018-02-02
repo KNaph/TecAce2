@@ -3,7 +3,7 @@
     "path": "kylephan.com.tecace2.Fragment3",
     "layout": "fragment_fragment3",
     "entry": "animation3entry",
-    "exit": "animation3entry",
+    "exit": "animation3exit",
     "next": "0"
 
 }
