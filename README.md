@@ -116,5 +116,7 @@ ArrayList al = new ArrayList();
 al.add("A");
 al.add("B");
 al.add("C");
+al.get(1);
+al.remove(2);
 ```
-#### An ArrayList is an example of a collection, I am able to 
+#### An ArrayList is an example of a collection, I am able to to add, search for the object at a given index, and remove an object at a given index.
