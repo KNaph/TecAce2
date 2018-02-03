@@ -107,3 +107,14 @@ for(E element : inputArray) {
 }
 ```
 #### This for enhanced loop is capable of accepting any type of of primitive given to it. It doesn't matter if inputArray contains Integers, Doubles, or Characters, it would be able to print them all appropriately.
+
+### Collections:
+Collections are a framework in Java that allow users to store and manipulate a group of objects. These collections allow you to sort, search, insert, remove, or modify objects stored inside of these collections. They are essentially a group of objects.
+
+```Java
+ArrayList al = new ArrayList();
+al.add("A");
+al.add("B");
+al.add("C");
+```
+#### An ArrayList is an example of a collection, I am able to 
