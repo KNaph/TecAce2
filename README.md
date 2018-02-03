@@ -9,14 +9,16 @@ https://github.com/KNaph/TecAce2/tree/master/app/src/main/assets
 
 ## Java programming questions:
 
-### Design Patterns:
+## Design Patterns:
 ### Singleton: 
 A singleton is a class that allows only one instance of that specific class. These classes implement static methods and variables to allow only one instantiation of the class.
 
+----------------------------------------------------
 ### Observer:
 The observer pattern is a one to many relationship between objects. When the subject object changes it notifies it's dependent observer objects and automatically updates them. 
 
-### Definition and How to:
+----------------------------------------------------
+## Definition and How to:
 ### Equals:
 Equals is a method used to compare comparable objects. It indicates if one object is "equal to" this object and returns a boolean if they are equal or not. A simple 
 Example:
@@ -28,6 +30,7 @@ System.out.println(str1.equals(str2));
 ```
 #### The result would print "true"
 
+----------------------------------------------------
 ### hashCode:
 hashCode is a method that returns a hash code value, a 32-bit signed integer. This method must consistently return the same value when ran on the same code.
 Example:
@@ -37,10 +40,12 @@ System.out.println(str1.hashCode());
 ```
 #### The result would print 2130623732
 
+----------------------------------------------------
 ### Clone:
 Clone is a method that creates an exact copy of an object, creating a new instance of the object and initializing all of its fields with the same exact values as the original object. 
 For an object to be cloneable it must implement Cloneable and have a public clone() method that throws CloneNotSupportedException and calls super.clone().
 
+----------------------------------------------------
 ### toString:
 toString is a method that returns a string that represents the object in text. For primitives the toString method works fine and will generally give an appropriate String representation of the object. For user defined classes and objects you must Override the toString method in order to gain any intelligible data.
 ```Java
@@ -62,6 +67,7 @@ class ToStringExample {
 #### If you were to NOT override the toString method you would get ToStringExample@XXXXXXX where XXXXXXX represents the hashCode.
 #### If you instantiate a new ToStringExample(5, 9) and called it's toString you would be returned with "X = 5, Y = 9"
 
+----------------------------------------------------
 ### Comparable:
 Comparable is an interface used to compare objects of the same class. You can use this interface to sort a list of things by logical order. For example sorting a list of movies by their year of release. This method will return either a negative, zero, positive number. A negative means this object is less than the specified object, zero means it is equal to, and a positive means it is greater than the specified object.
 
@@ -73,11 +79,13 @@ System.out.println(str1.compareTo(str2));
 ```
 #### This would print "32" meaning that str1 is greater than the specified object (str2)
 
+----------------------------------------------------
 ### Comparator:
 Comparator is an interface to be used in a separate class for comparing objects. If we want to compare two objects by attributes of different objects then we can use comparator. 
 
 For example if we wanted to compare movies by either rating or year we can implement Comparator classes to sort by each.
 
+----------------------------------------------------
 ### Iterator:
 An iterator is a method in which you can cycle through all of the objects in a collection. 
 Given a collection, you can use a while loop in conjunction with the iterator method hasNext() to iterate through all of the objects in the collection.
@@ -99,6 +107,7 @@ while(itr.hasNext()) {
 
 #### The resulting print wouldl be A B C
 
+----------------------------------------------------
 ### Generics:
 Generics are used to create classes and methods that are flexible and capable of handling any type appropriately.
 ```Java
@@ -108,6 +117,7 @@ for(E element : inputArray) {
 ```
 #### This for enhanced loop is capable of accepting any type of of primitive given to it. It doesn't matter if inputArray contains Integers, Doubles, or Characters, it would be able to print them all appropriately.
 
+----------------------------------------------------
 ### Collections:
 Collections are a framework in Java that allow users to store and manipulate a group of objects. These collections allow you to sort, search, insert, remove, or modify objects stored inside of these collections. They are essentially a group of objects.
 
